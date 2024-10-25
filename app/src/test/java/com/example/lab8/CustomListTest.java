@@ -12,6 +12,13 @@ public class CustomListTest {
     private CustomList list;
 
     /**
+     * create a mocklist for my citylist * @return
+     */
+    public CustomList MockCityList(){
+        list = new CustomList(null,new ArrayList<>()); return list;
+    }
+
+    /**
      * Setup a mock list for testing before each test.
      */
     @BeforeEach
@@ -34,15 +41,13 @@ public class CustomListTest {
     public void addCity(City city) {
         list.addCity(city); // Calls the addCity method in CustomList
     }
-
     /**
      * Tests adding a city to the list.
      * Verifies that the list size increases by one.
      */
     @Test
-    public void addCityTest() {
-        int initialSize = getCount();
-        addCity(new City("Estevan", "SK"));
-        assertEquals(initialSize + 1, getCount());
+    public void addCityTest(){
+        list = MockCityList();
+        int listSize = list.getCount(); list.addCity(new City("Estevan", "SK")); assertEquals(list.getCount(),listSize + 1);
     }
 }
