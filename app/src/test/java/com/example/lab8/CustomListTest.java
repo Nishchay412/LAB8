@@ -24,7 +24,7 @@ public class CustomListTest {
      * @return the size of the list
      */
     public int getCount() {
-        return list.getCities().size(); // Assuming getCities() is a method in CustomList
+        return list.getCount(); // Uses the getCount() method of CustomList
     }
 
     /**
@@ -32,7 +32,7 @@ public class CustomListTest {
      * @param city the city to add
      */
     public void addCity(City city) {
-        list.getCities().add(city); // Assuming getCities() is a method in CustomList
+        list.addCity(city); // Calls the addCity method in CustomList
     }
 
     /**
