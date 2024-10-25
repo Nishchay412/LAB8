@@ -1,6 +1,8 @@
 package com.example.lab8;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,13 +14,6 @@ public class CustomListTest {
     private CustomList list;
 
     /**
-     * create a mocklist for my citylist * @return
-     */
-    public CustomList MockCityList(){
-        list = new CustomList(null,new ArrayList<>()); return list;
-    }
-
-    /**
      * Setup a mock list for testing before each test.
      */
     @BeforeEach
@@ -27,27 +22,24 @@ public class CustomListTest {
     }
 
     /**
-     * Gets the size of the list.
-     * @return the size of the list
-     */
-    public int getCount() {
-        return list.getCount(); // Uses the getCount() method of CustomList
-    }
-
-    /**
-     * Adds a city object to the list.
-     * @param city the city to add
-     */
-    public void addCity(City city) {
-        list.addCity(city); // Calls the addCity method in CustomList
-    }
-    /**
      * Tests adding a city to the list.
      * Verifies that the list size increases by one.
      */
     @Test
-    public void addCityTest(){
-        list = MockCityList();
-        int listSize = list.getCount(); list.addCity(new City("Estevan", "SK")); assertEquals(list.getCount(),listSize + 1);
+    public void addCityTest() {
+        int listSize = list.getCount();
+        list.addCity(new City("Estevan", "SK"));
+        assertEquals(listSize + 1, list.getCount());
+    }
+
+    /**
+     * Tests the hasCity method to verify if a city is in the list.
+     */
+    @Test
+    public void testHasCity() {
+        City city = new City("Regina", "Saskatchewan");
+        assertFalse(list.hasCity(city));
+        list.addCity(city);
+        assertTrue(list.hasCity(city));
     }
 }
